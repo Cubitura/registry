@@ -1,0 +1,37 @@
+type SubscriptionResult = variant {
+    Ok: text;
+    Err: text;
+};
+
+type Subscriber = record {  
+    id: text;
+    canister_id: text;
+    callback: text;
+    name: text;
+    description: text;
+    topic: text;
+    namespace: text;
+    active: bool;
+};
+
+type Subscribers = record {
+    id: text;
+    canister_id: text;
+    callback: text;
+    name: text;
+    description: text;
+    topic: text;
+    namespace: text;
+    active: bool;
+};
+
+service : {
+
+    "set_subscription": (text, text) -> (SubscriptionResult);
+    "unset_subscription": (text) -> (SubscriptionResult);
+    "get_subscriptions": () -> (vec Subscribers);
+    "get_subscription": (text) -> (Subscribers);
+
+    "hello": (text) -> (text) query;
+}
+
