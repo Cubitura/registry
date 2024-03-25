@@ -19,8 +19,11 @@ target/
 # frontend code
 node_modules/
 dist/
+<<<<<<< HEAD
 src/registry_frontend
 src/demo_frontend
+=======
+>>>>>>> c8b0cc7 (Initial commit.)
 
 # environment variables
 .env
