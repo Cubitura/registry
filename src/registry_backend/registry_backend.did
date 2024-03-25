@@ -1,3 +1,77 @@
+type OkErrResponse = variant {
+    Ok: text;
+    Err: text;
+};
+
+type Namespace = record {
+    name: text;
+    description: text;
+    subscribers: vec text;
+    active: bool;
+};
+
+type Namespaces = record {
+    id: text;
+    name: text;
+    description: text;
+    subscribers: vec text;
+    active: bool;
+};
+
+type Topics = record {
+    id: text;
+    name: text;
+    description: text;
+    namespaces: vec text;
+    active: bool;
+};
+
+type CallStringResponse = record {
+    result: text;
+};
+
+type Topic = record {
+    name: text;
+    description: text;
+    namespaces: vec text;
+    active: bool;
+};
+
+type Subscribers = record {
+    id: text;
+    canister_id: text;
+    callback: text;
+    name: text;
+    description: text;
+    topic: text;
+    namespace: text;
+    active: bool;
+};
+
+type CallSubscribersResponse = record {
+    result: vec Subscribers;
+};
+
 service : {
-    "greet": (text) -> (text) query;
+    "namespace_register": (Namespace) -> (OkErrResponse);
+    "namespace_unregister": (text) -> (OkErrResponse);
+    "namespace": (text) -> (opt Namespaces) query;
+    "namespaces": () -> (vec Namespaces) query;
+    "namespace_register_subscriber": (text, text) -> (OkErrResponse);
+    "namespace_subscriber_size": (text) -> (nat64) query;
+    "namespaces_by_topic": (text) -> (vec Namespaces) query;
+    "namespace_by_subscriber": (text) -> (Namespaces) query;
+    "topic_register": (Topic) -> (OkErrResponse);
+    "topic_unregister": (text) -> (OkErrResponse);
+    "topic": (text) -> (Topics) query;
+    "topics": () -> (vec Topics) query;
+    "topic_by_name": (text) -> (Topics) query;
+    "subscriber_register": (Subscribers) -> (OkErrResponse);
+    "subscriber_unregister": (text) -> (OkErrResponse);
+    "subscriber": (text) -> (Subscribers) query;
+    "subscribers": () -> (vec Subscribers) query;
+    "agent_subscribe": (text, text) -> (CallStringResponse);
+    "agent_unsubscribe": (text) -> (OkErrResponse);
+    "agent_subscription": (text) -> (CallSubscribersResponse) query;
+    "agent_subscriptions": () -> (CallSubscribersResponse) query;
 }
