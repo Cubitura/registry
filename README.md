@@ -6,7 +6,7 @@ Topics, namespaces and subscriptions are registered to support the message flow 
 
 ![Message Flow](docs/img/Message_Flow.png)
 
-**Configuration**
+**Configuration**<br/>
 The order of configuration of the registry is like this:
 
 1. Namespace
