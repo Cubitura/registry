@@ -2,7 +2,8 @@
 The registry is the module that is used for configuration of the service bus. Topics, namespaces and subscriptions are registered with this module, and the registry is accessible for all other modules. There's a separate set of functions just to support the subscriber agent.  
 
 **Message flow**<br/>
-Topics, namespaces and subscriptions are registered to support the message flow from message intake to message delivery.<br/>
+Topics, namespaces and subscriptions are registered to support the message flow from message intake to message delivery.
+
 ![Message Flow](docs/img/Message_Flow.png)
 
 ## Namespace Functions
