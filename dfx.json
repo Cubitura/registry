@@ -5,18 +5,10 @@
       "package": "registry_backend",
       "type": "rust"
     },
-    "registry_frontend": {
-      "dependencies": [
-        "registry_backend"
-      ],
-      "frontend": {
-        "entrypoint": "src/registry_frontend/src/index.html"
-      },
-      "source": [
-        "src/registry_frontend/assets",
-        "dist/registry_frontend/"
-      ],
-      "type": "assets"
+    "demo_backend": {
+      "candid": "src/demo_backend/demo_backend.did",
+      "package": "demo_backend",
+      "type": "rust"
     }
   },
   "defaults": {
