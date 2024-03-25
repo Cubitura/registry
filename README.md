@@ -6,6 +6,15 @@ Topics, namespaces and subscriptions are registered to support the message flow 
 
 ![Message Flow](docs/img/Message_Flow.png)
 
+**Configuration**
+The order of configuration of the registry is like this:
+
+1. Namespace
+2. Topic
+3. Subscriber
+
+First the namespace is added. Then a topic is added, and the namespace's ID is used to point the topic to the namespace. Finally a subscriber can be added, this can be done from client agent.
+
 ## Namespace Functions
 Namespaces are the core of the registry. Topic subscribers are registered in namespaces, and the namespaces are routing messages to subscriber canisters. Namespaces can be used to create collections of topics that are related (by topics or subscribers), and as load balancers if there's a large amount of subscribers.
 
